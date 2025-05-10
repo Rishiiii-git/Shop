@@ -1,0 +1,155 @@
+body {
+  margin: 0;
+  font-family: 'Segoe UI', sans-serif;
+  background-image: url('image/background.jpg');
+  background-size: cover;
+  background-attachment: fixed;
+  color: white;
+  text-align: center;
+  font-size: 18px;
+}
+
+.hero  {
+  padding: 80px 20px;
+  font-size: 30px;
+  background: rgba(0,0,0,0.6);
+}
+.hero p {
+  font-size: 50px;
+}
+
+.products-section {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 40px;
+  padding: 40px 20px;
+}
+
+.product-card {
+  background: rgba(255,255,255,0.1);
+  padding: 40px;
+  border-radius: 60px;
+  width: 290px;
+  transition: transform 0.6s;
+  backdrop-filter: blur(10px);
+  font-size: 18px;
+}
+
+.product-card:hover {
+  transform:rotateX(20deg)
+}
+
+.product-card img {
+  width: 100%;
+  height: 520px;
+  object-fit: cover;
+  border-radius: 10px;
+}
+.product-card label {
+  font-size: 25px;
+}
+.product-card option {
+  font-size: 30px;
+}
+.quantity input {
+font-size: 20px;  
+}
+
+.buy-btn {
+  margin-top: 10px;
+  padding: 15px;
+  font-size: 30px;
+  background: limegreen;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  color: white;
+  width: 100%;
+}
+
+.buy-btn:hover {
+  background: green;
+}
+
+.quantity {
+  display: flex;
+  justify-content: center;
+  font-size: 12px;
+  gap: 10px;
+  margin: 10px 0;
+}
+
+.quantity button {
+  font-size: 22px;
+  padding: 5px 10px;
+  cursor: pointer;
+}
+
+.checkout-section {
+  background: rgba(0,0,0,0.8);
+  padding: 60px 20px;
+  margin-top: 40px;
+  font-size: 20px;
+}
+
+.checkout-section h2 {
+  font-size: 44px;
+  margin-bottom: 30px;
+}
+
+.checkout-section button {
+  font-size: 30px;
+ 
+  padding: 20px 40px;
+  background: rgb(0, 255, 47);
+  color: rgb(0, 0, 0);
+  border: none;
+  border-radius: 16px;
+  cursor: pointer;
+}
+
+.checkout-section button:hover {
+  background: darkred;
+}
+
+.model-showcase {
+  margin: 60px auto;
+  text-align: center;
+}
+
+.model-showcase img {
+  width: auto;
+  max-height: 900px;
+  border-radius: 20px;
+  display: block;
+  margin: 0 auto;
+  box-shadow: 0 0 20px rgba(0,0,0,0.5);
+}
+.cart-section {
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+  margin: 40px auto;
+  padding: 20px;
+  width: 80%;
+  border-radius: 16px;
+  text-align: left;
+  font-size: 49px;
+  color: white;
+}
+
+.cart-section h3 {
+  font-size: 60px;
+  margin-bottom: 20px;
+}
+
+.cart-section button {
+  margin-top: 20px;
+  padding: 15px 30px;
+  font-size: 20px;
+  background: green;
+  color: white;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+}

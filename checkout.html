@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Checkout</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background: linear-gradient(to right, #f7f7f7, #e0f7fa);
+      color: #333;
+    }
+    .container {
+      max-width: 900px;
+      margin: auto;
+      padding: 40px 20px;
+    }
+    h1 {
+      text-align: center;
+      font-size: 36px;
+      color: #3b3b3b;
+    }
+    form {
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+      margin-bottom: 40px;
+    }
+    input, textarea {
+      padding: 12px;
+      font-size: 16px;
+      border: 2px solid #bbb;
+      border-radius: 6px;
+    }
+    .qr-section {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 20px;
+    }
+    .qr-box {
+      flex: 1;
+      text-align: center;
+    }
+    iframe {
+      border: none;
+      border-radius: 10px;
+    }
+    .back-link {
+      text-align: center;
+      margin-top: 20px;
+    }
+    .back-link a {
+      background: #0d47a1;
+      color: white;
+      padding: 10px 20px;
+      text-decoration: none;
+      border-radius: 6px;
+    }
+    .back-link a:hover {
+      background: #1565c0;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Customer Information</h1>
+    <form action="https://uat.esewa.com.np/epay/main" method="POST">
+      <input type="text" name="customer_name" placeholder="Your Name" required>
+      <input type="email" name="email" placeholder="Your Email" required>
+      <input type="text" name="phone" placeholder="Phone Number" required>
+      <textarea name="address" rows="3" placeholder="Delivery Address" required></textarea>
+
+      <!-- eSewa Fields -->
+      <input type="hidden" name="amt" value="1000"> <!-- Replace dynamically -->
+      <input type="hidden" name="psc" value="0">
+      <input type="hidden" name="pdc" value="0">
+      <input type="hidden" name="txAmt" value="0">
+      <input type="hidden" name="tAmt" value="1000"> <!-- Replace dynamically -->
+      <input type="hidden" name="pid" value="ORDER123456"> <!-- Replace dynamically -->
+      <input type="hidden" name="scd" value="EPAYTEST">
+      <input type="hidden" name="su" value="http://localhost/success.html">
+      <input type="hidden" name="fu" value="http://localhost/failure.html">
+
+      <button type="submit" style="font-size: 18px; padding: 15px; background-color: #00c853; color: white; border: none; border-radius: 8px; cursor: pointer;">Pay with eSewa</button>
+    </form>
+
+    <div class="qr-section">
+      <div class="qr-box">
+        <h2>Scan to Pay</h2>
+        <img src="images/esewa-qr.png" alt="eSewa QR" style="width:250px; height:auto;">
+        <p>eSewa ID: 9845138033</p>
+      </div>
+      <div>
+        <h2>Location</h2>
+        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d174.53876930548557!2d84.39890387162114!3d27.676138372756334!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3994fb0012679f3d%3A0x319aba4bd345b44f!2sS.K%20Enterprises!5e1!3m2!1sen!2snp!4v1746849857716!5m2!1sen!2snp" width="400" height="300" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+      </div>
+    </div>
+
+    <div class="back-link">
+      <a href="index.html">⬅ Back to Store</a>
+    </div>
+  </div>
+</body>
+</html>

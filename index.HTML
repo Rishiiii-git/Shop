@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Fashion Store</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="hero">
+    <h1>Welcome to Blank & Co Wear$</h1>
+    <p>Shop your style with ease!</p>
+  </div>
+
+  <section class="products-section">
+    <div class="product-card">
+      <img src="image/model.jpg" alt="Model Showcasing Outfit">
+      <h2>Model Showcase</h2>
+      <p>Full Fit Sample</p>
+    </div>
+
+    <div class="product-card">
+      <img src="image/tshirt.jpg" alt="T-Shirt">
+      <h2>T-Shirt</h2>
+      <label>Size:</label>
+      <select id="size-tshirt">
+        <option>S</option><option>M</option><option>L</option><option>XL</option><option>XXL</option>
+      </select>
+      <label>Quantity:</label>
+      <div class="quantity">
+        <button onclick="decrease('qty-tshirt')">-</button>
+        <input type="number" id="qty-tshirt" value="1" min="1">
+        <button onclick="increase('qty-tshirt')">+</button>
+      </div>
+      <button class="buy-btn" onclick="addToCart('T-Shirt', 1000, 'size-tshirt', 'qty-tshirt')">Buy - Rs. 1000</button>
+    </div>
+
+    <div class="product-card">
+      <img src="image/shoes1.avif" alt="Shoes">
+      <h2>Shoes</h2>
+      <label>Size:</label>
+      <select id="size-shoes">
+        <option>38</option><option>39</option><option>40</option><option>41</option><option>42</option>
+      </select>
+      <label>Quantity:</label>
+      <div class="quantity">
+        <button onclick="decrease('qty-shoes')">-</button>
+        <input type="number" id="qty-shoes" value="1" min="1">
+        <button onclick="increase('qty-shoes')">+</button>
+      </div>
+      <button class="buy-btn" onclick="addToCart('Shoes', 2500, 'size-shoes', 'qty-shoes')">Buy - Rs. 2500</button>
+    </div>
+
+    <div class="product-card">
+      <img src="image/cap.jfif" alt="Cap">
+      <h2>Cap</h2>
+      <label>Size:</label>
+      <select id="size-cap">
+        <option>Free</option>
+      </select>
+      <label>Quantity:</label>
+      <div class="quantity">
+        <button onclick="decrease('qty-cap')">-</button>
+        <input type="number" id="qty-cap" value="1" min="1">
+        <button onclick="increase('qty-cap')">+</button>
+      </div>
+      <button class="buy-btn" onclick="addToCart('Cap', 500, 'size-cap', 'qty-cap')">Buy - Rs. 500</button>
+    </div>
+  </section>
+
+  <section class="checkout-section">
+    <h2>Checkout</h2>
+    <button onclick="location.href='checkout.html'">Proceed to Checkout</button>
+  </section>
+<div id="cart" class="cart-section"></div>
+
+  <script src="script.js"></script>
+</body>
+</html>
+  <script src="script.js"></script>
+</body>
+</html>
