@@ -123,5 +123,18 @@
       orderDetailsField.value = orderDetails;
     }
   </script>
+  <script>
+  window.onload = function () {
+    const cart = JSON.parse(localStorage.getItem('cartData') || "[]");
+    const orderBox = document.getElementById("order-details");
+    if (cart.length > 0 && orderBox) {
+      const orderText = cart.map(item => 
+        `${item.name} (Size: ${item.size}) x${item.qty} = Rs. ${item.qty * item.price}`
+      ).join("\n");
+      orderBox.value = orderText;
+    }
+  };
+</script>
+
 </body>
 </html>

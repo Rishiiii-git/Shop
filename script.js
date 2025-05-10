@@ -67,6 +67,8 @@ function clearCart() {
   renderCart();
 }
 
+
+
 // Optional: Checkout button handler
 function checkout() {
   if (cart.length > 0) {
@@ -76,3 +78,7 @@ function checkout() {
     alert("Your cart is empty!");
   }
 }
+localStorage.setItem('cartData', JSON.stringify(cart));
+
+
+

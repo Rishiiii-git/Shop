@@ -47,6 +47,13 @@ body {
   transform:rotateX(10deg)
 }
 
+@media (max-width: 768px) {
+  .product-card img {
+    height: auto;
+    max-height: 400px;
+  }
+}
+
 .product-card img {
   width: 100%;
   height: 520px;
