@@ -73,9 +73,12 @@
       <h2 style="font-size: 32px; margin-bottom: 20px;">Checkout</h2>
     
       <form action="https://formspree.io/f/xovdlyrd" method="POST" style="max-width: 600px; margin: 0 auto; display: flex; flex-direction: column; gap: 20px;">
-        <input type="text" name="name" placeholder="Full Name" required style="padding: 15px; font-size: 18px;" id="name" />
-        <input type="email" name="email" placeholder="Email Address" required style="padding: 15px; font-size: 18px;" id="email" />
-        <textarea name="order-details" placeholder="Your order details (product, size, quantity...)" required rows="5" style="padding: 15px; font-size: 18px;" id="order-details"></textarea>
+        <input type="text" name="name" placeholder="Full Name" required style="padding: 15px; font-size: 28px;" id="name" />
+       
+        <input type="email" name="email" placeholder="Email Address" required style="padding: 15px; font-size: 28px;" id="email" />
+       <input type="address" name="address" placeholder=" Address" required style="padding: 15px; font-size: 28px;" id="address" />
+       <input type="number" name="number" placeholder="Phone number" required style="padding: 15px; font-size: 28px;" id="number" />
+        <textarea name="order-details" placeholder="Your order details (product, size, quantity...)" required rows="5" style="padding: 15px; font-size: 28px;" id="order-details"></textarea>
         
         <button type="submit" style="padding: 15px; font-size: 20px; background-color: #333; color: #fff; border: none; cursor: pointer; transition: background 0.3s;">
           Submit Order
@@ -85,9 +88,10 @@
 
     <div class="qr-section">
       <div class="qr-box">
-        <h2>Scan to Pay</h2>
+        <h2 style="font-size: 30px;">Scan to Pay</h2>
         <img src="images/esewa-qr.png" alt="eSewa QR" style="width:250px; height:auto;">
-        <p>eSewa ID: 9845138033</p>
+        <p style="font-size: 30px;">eSewa ID: 9845138033 </p>
+        
       </div>
       <div>
         <h2>Location</h2>
@@ -96,7 +100,7 @@
     </div>
 
     <div class="back-link">
-      <a href="index.html">⬅ Back to Store</a>
+      <a href="index.html"> Back to Store</a>
     </div>
   </div>
 
