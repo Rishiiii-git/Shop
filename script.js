@@ -15,6 +15,16 @@ function decrease(id) {
     updateCart(id); // Update cart after quantity change
   }
 }
+// Example function to add product to cart
+function addToCart(product) {
+    // Assuming you have product details like name, size, price, and quantity
+    const cart = JSON.parse(localStorage.getItem('cart')) || [];
+    cart.push(product);
+    localStorage.setItem('cart', JSON.stringify(cart));
+
+    // You can update the cart UI after this if needed
+}
+
 
 // Function to update the cart
 function updateCart(id) {
@@ -27,6 +37,23 @@ function updateCart(id) {
   }
   renderCart();
 }
+const checkoutForm = document.querySelector('form');
+
+checkoutForm.addEventListener('submit', function (e) {
+  const cartDataInput = document.getElementById('cart-data');
+  const cartTotalInput = document.getElementById('cart-total');
+
+  let itemsText = cart.map(item => `${item.name} - $${item.price.toFixed(2)}`).join('\n');
+
+  cartDataInput.value = itemsText;
+  cartTotalInput.value = totalPrice.toFixed(2);
+});
+// Whenever cart changes, save it
+function updateCart() {
+  localStorage.setItem('cart', JSON.stringify(cart));
+  // Your existing code to update UI, total, etc.
+}
+
 
 // Function to add the selected item to the cart
 function addToCart(name, price, sizeId, qtyId) {
