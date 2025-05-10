@@ -11,24 +11,26 @@
     <h1>Welcome to Blank & Co Wear$</h1>
     <p>Shop your style with ease!</p>
   </div>
-   margin: 0;
-  font-family: 'Segoe UI', sans-serif;
-  background-image: url('background.jpg');
-  background-size: cover;
-  background-attachment: fixed;
-  color: white;
-  text-align: center;
-  font-size: 18px;
+
+  <img src="image/background.jpg" alt="Background" style="
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  object-fit: cover;
+  z-index: -1; ">
+
 
   <section class="products-section">
     <div class="product-card">
-      <img src="model.jpg" alt="Model Showcasing Outfit">
+      <img src="image/model.jpg" alt="Model Showcasing Outfit">
       <h2>Model Showcase</h2>
       <p>Full Fit Sample</p>
     </div>
 
     <div class="product-card">
-      <img src="tshirt.jpg" alt="T-Shirt">
+      <img src="image/tshirt.jpg" alt="T-Shirt">
       <h2>T-Shirt</h2>
       <label>Size:</label>
       <select id="size-tshirt">
@@ -44,7 +46,7 @@
     </div>
 
     <div class="product-card">
-      <img src="shoes1.avif" alt="Shoes">
+      <img src="image/shoes1.avif" alt="Shoes">
       <h2>Shoes</h2>
       <label>Size:</label>
       <select id="size-shoes">
@@ -60,7 +62,7 @@
     </div>
 
     <div class="product-card">
-      <img src="cap.jfif" alt="Cap">
+      <img src="image/cap.jfif" alt="Cap">
       <h2>Cap</h2>
       <label>Size:</label>
       <select id="size-cap">
