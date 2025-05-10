@@ -30,7 +30,7 @@
     }
     input, textarea {
       padding: 12px;
-      font-size: 16px;
+      font-size: 20px;
       border: 2px solid #bbb;
       border-radius: 6px;
     }
@@ -68,25 +68,20 @@
 <body>
   <div class="container">
     <h1>Customer Information</h1>
-    <form action="https://uat.esewa.com.np/epay/main" method="POST">
-      <input type="text" name="customer_name" placeholder="Your Name" required>
-      <input type="email" name="email" placeholder="Your Email" required>
-      <input type="text" name="phone" placeholder="Phone Number" required>
-      <textarea name="address" rows="3" placeholder="Delivery Address" required></textarea>
-
-      <!-- eSewa Fields -->
-      <input type="hidden" name="amt" value="1000"> <!-- Replace dynamically -->
-      <input type="hidden" name="psc" value="0">
-      <input type="hidden" name="pdc" value="0">
-      <input type="hidden" name="txAmt" value="0">
-      <input type="hidden" name="tAmt" value="1000"> <!-- Replace dynamically -->
-      <input type="hidden" name="pid" value="ORDER123456"> <!-- Replace dynamically -->
-      <input type="hidden" name="scd" value="EPAYTEST">
-      <input type="hidden" name="su" value="http://localhost/success.html">
-      <input type="hidden" name="fu" value="http://localhost/failure.html">
-
-      <button type="submit" style="font-size: 18px; padding: 15px; background-color: #00c853; color: white; border: none; border-radius: 8px; cursor: pointer;">Pay with eSewa</button>
-    </form>
+  
+    <section class="checkout-section" style="padding: 40px; background-color: #f5f5f5; text-align: center;">
+      <h2 style="font-size: 32px; margin-bottom: 20px;">Checkout</h2>
+    
+      <form action="https://formspree.io/f/xovdlyrd" method="POST" style="max-width: 600px; margin: 0 auto; display: flex; flex-direction: column; gap: 20px;">
+        <input type="text" name="name" placeholder="Full Name" required style="padding: 15px; font-size: 18px;" id="name" />
+        <input type="email" name="email" placeholder="Email Address" required style="padding: 15px; font-size: 18px;" id="email" />
+        <textarea name="order-details" placeholder="Your order details (product, size, quantity...)" required rows="5" style="padding: 15px; font-size: 18px;" id="order-details"></textarea>
+        
+        <button type="submit" style="padding: 15px; font-size: 20px; background-color: #333; color: #fff; border: none; cursor: pointer; transition: background 0.3s;">
+          Submit Order
+        </button>
+      </form>
+    </section>
 
     <div class="qr-section">
       <div class="qr-box">
@@ -104,5 +99,25 @@
       <a href="index.html">⬅ Back to Store</a>
     </div>
   </div>
+
+  <script>
+    // Check if cart data exists in localStorage
+    const cartData = JSON.parse(localStorage.getItem("cart"));
+    const nameField = document.getElementById("name");
+    const emailField = document.getElementById("email");
+    const orderDetailsField = document.getElementById("order-details");
+
+    // If cart data exists, autofill order details
+    if (cartData) {
+      nameField.value = cartData.name || "";
+      emailField.value = cartData.email || "";
+      
+      let orderDetails = "";
+      cartData.items.forEach(item => {
+        orderDetails += `${item.name} (Size: ${item.size}) x${item.qty} - Rs. ${item.price * item.qty}\n`;
+      });
+      orderDetailsField.value = orderDetails;
+    }
+  </script>
 </body>
 </html>

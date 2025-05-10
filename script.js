@@ -1,41 +1,50 @@
-function increase(id) {
-  let input = document.getElementById(id);
-  input.value = parseInt(input.value) + 1;
-}
-
-function decrease(id) {
-  let input = document.getElementById(id);
-  if (parseInt(input.value) > 1) {
-    input.value = parseInt(input.value) - 1;
-  }
-}
-
-function addToCart(name, price, sizeId, qtyId) {
-  let size = document.getElementById(sizeId).value;
-  let qty = document.getElementById(qtyId).value;
-  alert(`${name} (Size: ${size}) x${qty} added to cart. Total: Rs. ${price * qty}`);
-}
 let cart = [];
 
+// Function to increase the quantity
 function increase(id) {
   let input = document.getElementById(id);
   input.value = parseInt(input.value) + 1;
+  updateCart(id); // Update cart after quantity change
 }
 
+// Function to decrease the quantity
 function decrease(id) {
   let input = document.getElementById(id);
   if (parseInt(input.value) > 1) {
     input.value = parseInt(input.value) - 1;
+    updateCart(id); // Update cart after quantity change
   }
 }
 
-function addToCart(name, price, sizeId, qtyId) {
-  let size = document.getElementById(sizeId).value;
-  let qty = parseInt(document.getElementById(qtyId).value);
-  cart.push({ name, price, size, qty });
+// Function to update the cart
+function updateCart(id) {
+  const productId = id.split('-')[1]; // Extract product name from id
+  let cartItem = cart.find(item => item.name === productId);
+
+  if (cartItem) {
+    const qty = parseInt(document.getElementById('qty-' + productId).value);
+    cartItem.qty = qty;
+  }
   renderCart();
 }
 
+// Function to add the selected item to the cart
+function addToCart(name, price, sizeId, qtyId) {
+  let size = document.getElementById(sizeId).value;
+  let qty = parseInt(document.getElementById(qtyId).value);
+
+  // Check if the item already exists in the cart
+  let cartItem = cart.find(item => item.name === name && item.size === size);
+  if (cartItem) {
+    cartItem.qty += qty; // If item exists, increase quantity
+  } else {
+    cart.push({ name, price, size, qty });
+  }
+
+  renderCart();
+}
+
+// Function to render the cart
 function renderCart() {
   const cartDiv = document.getElementById('cart');
   cartDiv.innerHTML = '<h3>🛒 Your Bucket</h3>';
@@ -49,8 +58,21 @@ function renderCart() {
     `;
   });
 
-
+  cartDiv.innerHTML += `<hr><h4>Total: Rs. ${total}</h4>`;
 }
 
+// Call this function to clear the cart (optional)
+function clearCart() {
+  cart = [];
+  renderCart();
+}
 
-
+// Optional: Checkout button handler
+function checkout() {
+  if (cart.length > 0) {
+    alert("Proceeding to checkout");
+    // Redirect to checkout page or show checkout form
+  } else {
+    alert("Your cart is empty!");
+  }
+}
