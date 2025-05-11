@@ -59,6 +59,43 @@
     .add-to-cart-btn:hover {
       background-color: #32cd32;
     }
+
+    /* MODAL STYLES */
+    .modal {
+      position: fixed;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.8);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 999;
+      padding: 1rem;
+      display: none;
+    }
+
+    .modal.active {
+      display: flex;
+    }
+
+    .modal img {
+      max-width: 90vw;
+      max-height: 90vh;
+      transition: transform 0.3s ease;
+      cursor: zoom-in;
+    }
+
+    .modal-close {
+      position: absolute;
+      top: 1rem;
+      right: 1.5rem;
+      font-size: 2rem;
+      color: white;
+      cursor: pointer;
+      background: rgba(0, 0, 0, 0.6);
+      padding: 0.5rem 1rem;
+      border-radius: 0.5rem;
+      z-index: 1000;
+    }
   </style>
 </head>
 <body class="bg-gray-100 font-sans">
@@ -85,6 +122,12 @@
     </div>
   </div>
 
+  <!-- MODAL -->
+  <div id="modal" class="modal">
+    <span class="modal-close" onclick="closeModal()">✖</span>
+    <img id="modal-img" src="" alt="Product Image" />
+  </div>
+
   <script>
     const tshirts = [
       { id: 1, name:" Minimalist Aesthetic", price: 2100, image: "Minimalist Aesthetic.jpg" },
@@ -107,7 +150,7 @@
         card.className = "card bg-white/70 p-6 rounded-2xl shadow-lg hover:shadow-2xl transition duration-300 backdrop-blur-lg";
 
         card.innerHTML = `
-          <img src="${tshirt.image}" alt="${tshirt.name}" class="w-full h-80 object-cover rounded-xl mb-5">
+          <img src="${tshirt.image}" alt="${tshirt.name}" class="w-full h-80 object-cover rounded-xl mb-5 cursor-pointer" onclick="openModal('${tshirt.image}')">
           <h3 class="text-3xl font-bold text-black-800 mb-2">${tshirt.name}</h3>
           <p class="text-2xl text-gray-800 font-semibold mb-4">Rs ${tshirt.price}</p>
 
@@ -190,6 +233,15 @@
           card.classList.remove('show');
         }
       });
+    }
+
+    function openModal(imageSrc) {
+      document.getElementById("modal-img").src = imageSrc;
+      document.getElementById("modal").classList.add("active");
+    }
+
+    function closeModal() {
+      document.getElementById("modal").classList.remove("active");
     }
 
     window.addEventListener('scroll', revealCards);
