@@ -1,140 +1,209 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Checkout</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Checkout - Blank & Co Wear$</title>
+  <img src="background.jpg" alt="Background" style="
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    object-fit: cover;
+    z-index: -1; ">
   <style>
     body {
-      font-family: Arial, sans-serif;
+      font-family: 'Segoe UI', sans-serif;
+      background: linear-gradient(135deg, #f7f7f7, #ffffff);
       margin: 0;
       padding: 0;
-      background: linear-gradient(to right, #f7f7f7, #e0f7fa);
-      color: #333;
     }
+
     .container {
       max-width: 900px;
-      margin: auto;
-      padding: 40px 20px;
+      margin: 40px auto;
+      background: rgb(255, 255, 255);
+      padding: 30px;
+      border-radius: 15px;
+      box-shadow: 0 5px 25px rgb(255, 255, 255);
     }
-    h1 {
+    .container input{
+font-size: 25px;
+
+    }
+    .container textarea{
+      font-size: 25px;
+    }
+    .container button{
+      color: #ffe0e0;
+      background: rgb(0, 255, 47);
+      font-family:'Times New Roman', Times, serif;
+      font-size: 30px;
+       box-shadow: 0 5px 25px rgba(13, 255, 1, 0.85);
+    }
+
+    h1, h2 {
+      font-size: 50px;
       text-align: center;
-      font-size: 36px;
-      color: #3b3b3b;
+      color: #222;
     }
+ 
+     
+
+
+    ul {
+      font-size: 40px;
+      list-style: none;
+      padding: 0;
+    }
+
+    li {
+      padding: 10px 0;
+      border-bottom: 1px solid #ccc;
+    }
+
+    .total {
+      font-size: 1.2em;
+      font-weight: bold;
+      text-align: right;
+      margin-top: 10px;
+      color: #444;
+    }
+
     form {
-      display: flex;
-      flex-direction: column;
-      gap: 15px;
-      margin-bottom: 40px;
+      margin-top: 30px;
     }
+
     input, textarea {
+      width: 100%;
       padding: 12px;
-      font-size: 20px;
-      border: 2px solid #bbb;
-      border-radius: 6px;
+      margin: 10px 0;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+      font-size: 16px;
     }
-    .qr-section {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      flex-wrap: wrap;
-      gap: 20px;
-    }
-    .qr-box {
-      flex: 1;
-      text-align: center;
-    }
-    iframe {
+
+    button {
+      width: 100%;
+      padding: 14px;
+      background-color: #111;
+      color: white;
+      font-size: 17px;
       border: none;
       border-radius: 10px;
+      cursor: pointer;
+      margin-top: 15px;
+      transition: 0.3s;
     }
-    .back-link {
+
+    button:hover {
+      background-color: #333;
+    }
+
+    .esewa {
+      margin-top: 40px;
+      padding: 20px;
+      background: #f1fdf1;
+      border: 1px solid #c1eac1;
+      border-radius: 10px;
+    }
+
+    .esewa img {
+       width: 400px; /* Sets the width to 300 pixels */
+  height: 550px; /* Sets the height to 200 pixels */
+      max-width: 800px;
+      display: block;
+      margin: 10px auto;
+    }
+
+    .esewa h3, .esewa p {
+      font-size: 30px;
       text-align: center;
+      margin: 5px;
+    }
+
+    iframe {
+      width: 100%;
+      height: 250px;
+      border: none;
+      border-radius: 12px;
       margin-top: 20px;
     }
-    .back-link a {
-      background: #0d47a1;
-      color: white;
-      padding: 10px 20px;
-      text-decoration: none;
-      border-radius: 6px;
-    }
-    .back-link a:hover {
-      background: #1565c0;
+
+    .section-title {
+      margin-top: 50px;
+      font-size: 70px;
+      text-align: center;
+      color: #555;
+      border-bottom: 2px solid #eee;
+      padding-bottom: 5px;
     }
   </style>
 </head>
 <body>
   <div class="container">
-    <h1>Customer Information</h1>
-  
-    <section class="checkout-section" style="padding: 40px; background-color: #f5f5f5; text-align: center;">
-      <h2 style="font-size: 32px; margin-bottom: 20px;">Checkout</h2>
-    
-      <form action="https://formspree.io/f/xovdlyrd" method="POST" style="max-width: 600px; margin: 0 auto; display: flex; flex-direction: column; gap: 20px;">
-        <input type="text" name="name" placeholder="Full Name" required style="padding: 15px; font-size: 28px;" id="name" />
-       
-        <input type="email" name="email" placeholder="Email Address" required style="padding: 15px; font-size: 28px;" id="email" />
-       <input type="address" name="address" placeholder=" Address" required style="padding: 15px; font-size: 28px;" id="address" />
-       <input type="number" name="number" placeholder="Phone number" required style="padding: 15px; font-size: 28px;" id="number" />
-        <textarea name="order-details" placeholder="Your order details (product, size, quantity...)" required rows="5" style="padding: 15px; font-size: 28px;" id="order-details"></textarea>
-        
-        <button type="submit" style="padding: 15px; font-size: 20px; background-color: #333; color: #fff; border: none; cursor: pointer; transition: background 0.3s;">
-          Submit Order
-        </button>
-      </form>
-    </section>
+    <h1>🧾 Order Summary</h1>
+    <ul id="order-list"></ul>
+    <p class="total">Total: Rs <span id="total-amount">0</span></p>
 
-    <div class="qr-section">
-      <div class="qr-box">
-        <h2 style="font-size: 30px;">Scan to Pay</h2>
-        <img src="esewa.png" alt="eSewa QR" style="width:250px; height:auto;">
-        <p style="font-size: 30px;">eSewa ID: 9845138033 </p>
-        
-      </div>
-      <div>
-        <h2>Location</h2>
-        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d174.53876930548557!2d84.39890387162114!3d27.676138372756334!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3994fb0012679f3d%3A0x319aba4bd345b44f!2sS.K%20Enterprises!5e1!3m2!1sen!2snp!4v1746849857716!5m2!1sen!2snp" width="400" height="300" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
-      </div>
+    <form action="https://formspree.io/f/xovdlyrd" method="POST" onsubmit="prepareOrderData()">
+      <h2>🚚 Shipping Details</h2>
+      <input type="text" name="Name"   placeholder="Your Full Name" required>
+      <input type="email" name="Email" placeholder="Your Email Address" required>
+      <textarea name="Address" placeholder="Delivery Address (with landmarks)" required></textarea>
+
+      <input type="hidden" name="Order Summary" id="order-summary-hidden">
+
+      <button type="submit">📤 Confirm & Send Order</button>
+    </form>
+
+    <div class="esewa">
+      <h2>📲 Pay with eSewa</h2>
+      <img src="esewa.png" alt="eSewa QR Code">
+      <h3>eSewa ID: <strong>9845138033</strong></h3>
+      <p>Name: <strong>Blank & Co Wear$</strong></p>
+      
+     <p> Confirm via DM after payment 📩 /
+      <a href="https://www.instagram.com/blankandtheco">@blankandtheco</a> </p>
     </div>
 
-    <div class="back-link">
-      <a href="index.html"> Back to Store</a>
-    </div>
+    <h2 class="section-title">📍 Find Us on Map</h2>
+    <iframe 
+      src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d174.53865462264892!2d84.39892536633181!3d27.676210152054033!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3994fb0012679f3d%3A0x319aba4bd345b44f!2sS.K%20Enterprises!5e1!3m2!1sen!2snp!4v1746950392714!5m2!1sen!2snp" 
+      allowfullscreen="" 
+      loading="lazy">
+    </iframe>
   </div>
 
   <script>
-    // Check if cart data exists in localStorage
-    const cartData = JSON.parse(localStorage.getItem("cart"));
-    const nameField = document.getElementById("name");
-    const emailField = document.getElementById("email");
-    const orderDetailsField = document.getElementById("order-details");
+    const cart = JSON.parse(localStorage.getItem("cart")) || [];
+    const listEl = document.getElementById("order-list");
+    const totalEl = document.getElementById("total-amount");
+    const hiddenInput = document.getElementById("order-summary-hidden");
 
-    // If cart data exists, autofill order details
-    if (cartData) {
-      nameField.value = cartData.name || "";
-      emailField.value = cartData.email || "";
-      
-      let orderDetails = "";
-      cartData.items.forEach(item => {
-        orderDetails += `${item.name} (Size: ${item.size}) x${item.qty} - Rs. ${item.price * item.qty}\n`;
-      });
-      orderDetailsField.value = orderDetails;
+    let total = 0;
+    let orderSummary = "";
+
+    cart.forEach(item => {
+      const itemTotal = item.price * item.quantity;
+      total += itemTotal;
+      const line = `${item.name} (${item.size}) x ${item.quantity} = Rs ${itemTotal}`;
+      orderSummary += line + '\n';
+
+      const li = document.createElement("li");
+      li.textContent = line;
+      listEl.appendChild(li);
+    });
+
+    totalEl.textContent = total.toFixed(2);
+    orderSummary += `\nTotal: Rs ${total.toFixed(2)}`;
+    hiddenInput.value = orderSummary;
+
+    function prepareOrderData() {
+      hiddenInput.value = orderSummary;
+      localStorage.removeItem("cart"); // clear cart after order
     }
   </script>
-  <script>
-  window.onload = function () {
-    const cart = JSON.parse(localStorage.getItem('cartData') || "[]");
-    const orderBox = document.getElementById("order-details");
-    if (cart.length > 0 && orderBox) {
-      const orderText = cart.map(item => 
-        `${item.name} (Size: ${item.size}) x${item.qty} = Rs. ${item.qty * item.price}`
-      ).join("\n");
-      orderBox.value = orderText;
-    }
-  };
-</script>
-
 </body>
 </html>

@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Blank & Co Wear$</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    body::before {
+      content: "";
+      background: url('background.jpg') no-repeat center center/cover;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      z-index: -1;
+      filter: blur(6px) brightness(0.5);
+    }
+
+    .card {
+      transform: perspective(1000px) rotateX(10deg);
+      opacity: 0;
+      transition: transform 0.6s ease, opacity 0.6s ease;
+      will-change: transform, opacity;
+      backdrop-filter: blur(20px); /* Strong blur for product card */
+    }
+
+    .card.show {
+      transform: perspective(1000px) rotateX(0deg);
+      opacity: 1;
+    }
+
+    .top-cart {
+      position: fixed;
+      top: 1rem;
+      right: 2rem;
+      background: rgba(255, 255, 255, 0.95);
+      padding: 0.8rem 1.2rem;
+      border-radius: 1rem;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.25);
+      z-index: 100;
+      font-weight: bold;
+      font-size: 1.25rem;
+      color: #000000;
+    }
+
+    .add-to-cart-btn {
+      background-color: limegreen;
+      color: white;
+      font-size: 1.3rem;
+      font-weight: bold;
+      padding: 1rem;
+      width: 100%;
+      border-radius: 0.75rem;
+      transition: 0.3s;
+    }
+
+    .add-to-cart-btn:hover {
+      background-color: #32cd32;
+    }
+  </style>
+</head>
+<body class="bg-gray-100 font-sans">
+  <h1 class="text-6xl font-extrabold text-center text-white pt-10 drop-shadow-md">Blank & Co Wear$</h1>
+
+  <div class="top-cart">
+    🛒 Cart: <span id="top-cart-count">0</span> items
+  </div>
+
+  <div class="container mx-auto p-6 mt-10">
+    <div id="products" class="grid grid-cols-1 md:grid-cols-3 gap-8"></div>
+
+    <div class="mt-14 bg-white/80 p-8 rounded-2xl shadow-md backdrop-blur-sm">
+      <h2 class="text-3xl font-semibold mb-6 text-gray-800">🛒 Your Cart</h2>
+      <ul id="cart" class="text-xl text-gray-700 space-y-3"></ul>
+      <div class="mt-6">
+        <p class="text-2xl font-bold text-gray-800">
+          Total: Rs <span id="total-price">0</span>
+        </p>
+        <button onclick="checkout()" class="mt-4 w-full bg-green-600 hover:bg-green-700 text-white font-bold py-3 rounded-xl transition">
+          Checkout
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    const tshirts = [
+      { id: 1, name:" Minimalist Aesthetic", price: 2100, image: "Minimalist Aesthetic.jpg" },
+      { id: 2, name: "Streetwear Aesthetic", price: 1800, image: "PRICES MAY VARY_ Enjoy All-Day Comfort_ This mens….jfif" },
+      { id: 3, name: "Vintage / Retro Aesthetic", price: 2000, image: "Get your order now_ Japanese Anime Eyes Print….jfif" },
+      { id: 4, name: "Y2K Aesthetic", price: 2200, image: "Abebey-Affliction Y2k Long Sleeve T shirt New Harajuku Street Round Neck Oversized Pullover Shirt Men Women Casual Gothic Clothing Tops XXL-9.jfif" },
+      { id: 5, name: "Grunge / Dark Academia", price: 2100, image: "download.jfif" },
+      { id: 6, name: "Cultural Modern Mix", price: 1950, image: "cultural.jfif" },
+    ];
+
+    const sizes = ["S", "M", "L", "XL", "XXL"];
+    const cart = [];
+
+    function renderProducts() {
+      const container = document.getElementById("products");
+      container.innerHTML = "";
+
+      tshirts.forEach((tshirt) => {
+        const card = document.createElement("div");
+        card.className = "card bg-white/70 p-6 rounded-2xl shadow-lg hover:shadow-2xl transition duration-300 backdrop-blur-lg";
+
+        card.innerHTML = `
+          <img src="${tshirt.image}" alt="${tshirt.name}" class="w-full h-80 object-cover rounded-xl mb-5">
+          <h3 class="text-3xl font-bold text-black-800 mb-2">${tshirt.name}</h3>
+          <p class="text-2xl text-gray-800 font-semibold mb-4">Rs ${tshirt.price}</p>
+
+          <label class="block text-2xl font-medium text-gray-700 mb-1">Size:</label>
+          <select class="w-full mb-4 p-3 text-2xl rounded-lg border" id="size-${tshirt.id}">
+            ${sizes.map(size => `<option value="${size}">${size}</option>`).join("")}
+          </select>
+
+          <label class="block text-2xl font-medium text-gray-700 mb-1">Quantity:</label>
+          <input type="number" min="1" value="1" id="qty-${tshirt.id}" class="w-full p-3 mb-5 text-2xl rounded-lg border">
+
+          <button onclick="addToCart(${tshirt.id})" class="add-to-cart-btn">
+            Add to Cart
+          </button>
+        `;
+
+        container.appendChild(card);
+      });
+
+      revealCards();
+    }
+
+    function addToCart(id) {
+      const tshirt = tshirts.find(t => t.id === id);
+      const size = document.getElementById(`size-${id}`).value;
+      const quantity = parseInt(document.getElementById(`qty-${id}`).value);
+      if (quantity < 1) return alert("Quantity must be at least 1!");
+
+      const item = { ...tshirt, size, quantity };
+      cart.push(item);
+      updateCart();
+    }
+
+    function updateCart() {
+      const cartList = document.getElementById("cart");
+      const totalPriceEl = document.getElementById("total-price");
+      const topCart = document.getElementById("top-cart-count");
+      cartList.innerHTML = "";
+
+      let total = 0;
+      let count = 0;
+
+      cart.forEach(item => {
+        const itemTotal = item.price * item.quantity;
+        total += itemTotal;
+        count += item.quantity;
+        cartList.innerHTML += `
+          <li>
+            <span class="font-bold">${item.name}</span> 
+            (${item.size}, Qty: ${item.quantity}) - 
+            Rs ${itemTotal}
+          </li>
+        `;
+      });
+
+      totalPriceEl.textContent = total.toFixed(2);
+      topCart.textContent = count;
+    }
+
+    function checkout() {
+      if (cart.length === 0) {
+        alert("Your cart is empty!");
+        return;
+      }
+
+      localStorage.setItem("cart", JSON.stringify(cart));
+      window.location.href = "checkout1.html";
+    }
+
+    function revealCards() {
+      const cards = document.querySelectorAll('.card');
+      const triggerBottom = window.innerHeight * 0.9;
+
+      cards.forEach(card => {
+        const cardTop = card.getBoundingClientRect().top;
+
+        if (cardTop < triggerBottom) {
+          card.classList.add('show');
+        } else {
+          card.classList.remove('show');
+        }
+      });
+    }
+
+    window.addEventListener('scroll', revealCards);
+    window.addEventListener('load', () => {
+      renderProducts();
+      revealCards();
+    });
+  </script>
+</body>
+</html>

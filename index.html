@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Fashion Store</title>
   <link rel="stylesheet" href="style.css">
 </head>
@@ -13,30 +13,26 @@
   </div>
 
   <img src="background.jpg" alt="Background" style="
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100vw;
-  height: 100vh;
-  object-fit: cover;
-  z-index: -1; ">
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    object-fit: cover;
+    z-index: -1; ">
 
-
-  
-          
   <section class="products-section">
-    
-
- 
-  <div class="@media"></div>
     <div class="product-card">
       <img src="Model1.jfif" alt="Model Showcasing Outfit">
       <h2>Model Showcase</h2>
-      <p style="font-size: 35px;" >Wear Confidence, Own the Street🔥</p>
+      <p style="font-size: 35px;">Wear Confidence, Own the Street🔥</p>
     </div>
 
     <div class="product-card">
       <img src="tshirt1.webp" alt="T-Shirt">
+      <div class="product-cardd">
+        <button class="product-cardd" onclick="location.href='shoees.html'"> More</button>
+      </div>
       <h2>T-Shirt</h2>
       <label>Size:</label>
       <select id="size-tshirt">
@@ -48,12 +44,15 @@
         <input type="number" id="qty-tshirt" value="1" min="1">
         <button onclick="increase('qty-tshirt')">+</button>
       </div>
-      <button class="buy-btn"   onclick="addToCart('T-Shirt', 1900, 'size-tshirt', 'qty-tshirt')">Buy - Rs. 1900</button>
-   <button class="buy-btn" onclick="location.href='checkout.html'">BUY DIRECTLY</button>
+      <button class="buy-btn" onclick="addToCart('T-Shirt', 1900, 'size-tshirt', 'qty-tshirt')">Buy - Rs. 1900</button>
+     
     </div>
 
     <div class="product-card">
       <img src="shoes2.jpg" alt="Shoes">
+      <div class="product-cardd">
+        <button class="product-cardd" onclick="location.href='shoees.html'"> More</button>
+      </div>
       <h2>Shoes</h2>
       <label>Size:</label>
       <select id="size-shoes">
@@ -66,50 +65,113 @@
         <button onclick="increase('qty-shoes')">+</button>
       </div>
       <button class="buy-btn" onclick="addToCart('Shoes', 2999, 'size-shoes', 'qty-shoes')">Buy - Rs. 2999</button>
-     <button class="buy-btn" onclick="location.href='checkout.html'">BUY DIRECTLY</button>
+    
     </div>
 
     <div class="product-card">
       <img src="pants.jpg" alt="Pant">
+      <div class="product-cardd">
+        <button class="product-cardd" onclick="location.href='shoees.html'">View More</button>
+      </div>
       <h2>Pants</h2>
       <label>Size:</label>
-      <select id="size-Pants">
-         <option>S</option><option>M</option><option>L</option><option>XL</option><option>XXL</option>
+      <select id="size-pants">
+        <option>S</option><option>M</option><option>L</option><option>XL</option><option>XXL</option>
       </select>
       <label>Quantity:</label>
       <div class="quantity">
-        <button onclick="decrease('qty-Pant')">-</button>
-        <input type="number" id="qty-Pant" value="1" min="1">
-        <button onclick="increase('qty-Pant')">+</button>
+        <button onclick="decrease('qty-pants')">-</button>
+        <input type="number" id="qty-pants" value="1" min="1">
+        <button onclick="increase('qty-pants')">+</button>
       </div>
-      <button class="buy-btn" onclick="addToCart('Cap', 599, 'size-Pants', 'qty-Pant')">Buy - Rs. 599</button>
-    <button class="buy-btn" onclick="location.href='checkout.html'">BUY DIRECTLY</button>
-    </div>
-  </section>
-<div id="cart" class="cart-section"></div>
-
-  <script src="script.js"></script>
-  <section class="checkout-section">
-    
+      <button class="buy-btn" onclick="addToCart('Pants', 599, 'size-pants', 'qty-pants')">Buy - Rs. 599</button>
       
     </div>
+  </section>
+
+  <!-- Cart Summary Section -->
+  <div id="cart" class="cart-section">
+    <h2>Your Cart</h2>
+    <ul id="cart-items"></ul>
+    <p><strong>Total:</strong> Rs <span id="total-price">0</span></p>
+  </div>
+
+  <section class="checkout-section">
     <h2>Checkout</h2>
     <div class="heroo">
       <p>FOR MORE INFO</p>
-     <h2>CONTACT US-<a href="https://www.instagram.com/blankandtheco/">@blankandtheco</a>
-
-  </h2>
-     </div>
-    <button onclick="location.href='checkout.html'">Proceed to Checkout</button>
+      <h2>CONTACT US - <a href="https://www.instagram.com/blankandtheco/">@blankandtheco</a></h2>
+    </div>
+    <button onclick="proceedToCheckout()">Proceed to Checkout</button>
   </section>
-   <div class="hero">
-  <p>MORE PRODCUT COMING....</p>
-  </div>
-<div id="cart" class="cart-section"></div>
 
-  <script src="script.js"></script>
+  <div class="hero">
+    <p>MORE PRODUCTS COMING....</p>
+  </div>
+
+  <!-- JavaScript -->
+  <script>
+    const cart = [];
+
+    function addToCart(name, price, sizeId, qtyId) {
+      const size = document.getElementById(sizeId).value;
+      const quantity = parseInt(document.getElementById(qtyId).value);
+      if (quantity < 1) {
+        alert("Quantity must be at least 1.");
+        return;
+      }
+
+      const item = { name, price, size, quantity };
+      cart.push(item);
+      updateCartDisplay();
+    }
+
+    function updateCartDisplay() {
+      const cartList = document.getElementById("cart-items");
+      const totalEl = document.getElementById("total-price");
+
+      cartList.innerHTML = "";
+      let total = 0;
+
+      cart.forEach(item => {
+        const itemTotal = item.price * item.quantity;
+        total += itemTotal;
+        const li = document.createElement("li");
+        li.textContent = `${item.name} (${item.size}) x ${item.quantity} - Rs ${itemTotal}`;
+        cartList.appendChild(li);
+      });
+
+      totalEl.textContent = total.toFixed(2);
+    }
+
+    function decrease(id) {
+      const input = document.getElementById(id);
+      if (parseInt(input.value) > 1) input.value--;
+    }
+
+    function increase(id) {
+      const input = document.getElementById(id);
+      input.value++;
+    }
+
+    function proceedToCheckout() {
+      if (cart.length === 0) {
+        alert("Your cart is empty!");
+        return;
+      }
+
+      let message = "🧾 Your Order:\n\n";
+      cart.forEach(item => {
+        message += `• ${item.name} (${item.size}) x ${item.quantity} - Rs ${item.price * item.quantity}\n`;
+      });
+
+      const total = cart.reduce((sum, item) => sum + item.price * item.quantity, 0);
+      message += `\n💵 Total Paid: Rs ${total.toFixed(2)}`;
+      alert(message);
+
+      localStorage.setItem("cart", JSON.stringify(cart));
+      window.location.href = "checkout.html";
+    }
+  </script>
 </body>
 </html>
-  <script src="script.js"></script>
-</body>
-</html>  
