@@ -8,6 +8,17 @@ body {
   text-align: center;
   font-size: 18px;
 }
+.background-video {
+  position: fixed;  /* Fix the video in place */
+  top: 0;
+  left: 0;
+  width: 100vw;     /* Make it cover the full width of the viewport */
+  height: 100vh;    /* Make it cover the full height of the viewport */
+  object-fit: cover; /* Ensure the video scales correctly without stretching */
+  z-index: -1;      /* Position it behind other content */
+  filter: grayscale(100%) contrast(100%); /* Make the video black & white */
+}
+
 
 .hero  {
   padding: 80px 20px;
@@ -39,7 +50,7 @@ body {
   border-radius: 60px;
   width: 290px;
   transition: transform 0.6s;
-  backdrop-filter: blur(10px);
+  backdrop-filter: blur(20px);
   font-size: 18px;
 }
 
@@ -64,11 +75,11 @@ body {
 margin-top: 7px;
   padding: 5px;
   font-size: 45px;
-  background: rgb(23, 23, 23);
+  background: rgb(119, 0, 178);
   border:none;
   border-radius: 40px;
   cursor: pointer;
-  color: white;
+    color: rgb(255, 255, 255);
   width: 100%;
 }
 .product-card label {

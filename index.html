@@ -11,20 +11,21 @@
     <h1>Welcome to Blank & Co Wear$</h1>
     <p>Shop your style with ease!</p>
   </div>
-
-  <img src="background.jpg" alt="Background" style="
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100vw;
-    height: 100vh;
-    object-fit: cover;
-    z-index: -1; ">
+  
+  <video autoplay loop muted class="background-video">
+    <source src="video2.mp4" type="video/mp4">
+    Your browser does not support the video tag.
+  </video>
 
   <section class="products-section">
-    <div class="product-card">
-      <img src="Model1.jfif" alt="Model Showcasing Outfit">
-      <h2>Model Showcase</h2>
+    <div class="product-card" style="max-width: 700px; margin: auto;">
+      <a href="shoees.html">
+        <video autoplay muted loop playsinline style="width: 100%; height: auto; border-radius: 12px;">
+          <source src="video1.mp4" type="video/mp4">
+          Your browser does not support the video tag.
+        </video>
+      </a>
+      <h2 style="font-size: 2em; margin-top: 10px;">Model Showcase</h2>
       <p style="font-size: 35px;">Wear Confidence, Own the Street🔥</p>
     </div>
 
@@ -45,7 +46,6 @@
         <button onclick="increase('qty-tshirt')">+</button>
       </div>
       <button class="buy-btn" onclick="addToCart('T-Shirt', 1900, 'size-tshirt', 'qty-tshirt')">Buy - Rs. 1900</button>
-     
     </div>
 
     <div class="product-card">
@@ -65,7 +65,6 @@
         <button onclick="increase('qty-shoes')">+</button>
       </div>
       <button class="buy-btn" onclick="addToCart('Shoes', 2999, 'size-shoes', 'qty-shoes')">Buy - Rs. 2999</button>
-    
     </div>
 
     <div class="product-card">
@@ -85,11 +84,9 @@
         <button onclick="increase('qty-pants')">+</button>
       </div>
       <button class="buy-btn" onclick="addToCart('Pants', 599, 'size-pants', 'qty-pants')">Buy - Rs. 599</button>
-      
     </div>
   </section>
 
-  <!-- Cart Summary Section -->
   <div id="cart" class="cart-section">
     <h2>Your Cart</h2>
     <ul id="cart-items"></ul>
@@ -109,7 +106,6 @@
     <p>MORE PRODUCTS COMING....</p>
   </div>
 
-  <!-- JavaScript -->
   <script>
     const cart = [];
 
