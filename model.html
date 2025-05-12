@@ -66,7 +66,7 @@
     }
 
     .product-section {
-      padding: 100px 60px;
+      padding: 80px 20px;
       text-align: center;
       background-color: #000;
       color: white;
@@ -74,28 +74,27 @@
 
     .product-section h2 {
       font-size: 3.5rem;
-      margin-bottom: 80px;
+      margin-bottom: 60px;
     }
 
     .product-container {
-      display: flex;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
       gap: 40px;
-      overflow-x: auto;
-      padding-bottom: 100px;
-      justify-content: flex-start;
+      justify-items: center;
     }
 
     .product-item {
       position: relative;
-      width: 450px;
-      height: 600px;
+      width: 100%;
+      max-width: 500px;
+      height: 650px;
       border-radius: 12px;
       overflow: hidden;
       transition: transform 0.3s ease;
       background-color: #111;
       display: flex;
       flex-direction: column;
-      justify-content: space-between;
     }
 
     .product-item img {
@@ -114,6 +113,7 @@
       text-align: left;
       font-size: 1.3rem;
       font-weight: bold;
+      flex-grow: 1;
     }
 
     .buy-button {
