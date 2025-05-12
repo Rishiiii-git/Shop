@@ -66,62 +66,76 @@
     }
 
     .product-section {
-      padding: 50px 20px;
+      padding: 100px 40px;
       text-align: center;
       background-color: #000;
       color: white;
     }
 
     .product-section h2 {
-      font-size: 2.5rem;
-      margin-bottom: 20px;
+      font-size: 3rem;
+      margin-bottom: 50px;
     }
 
     .product-container {
       display: flex;
-      gap: 20px;
+      gap: 40px;
       overflow-x: auto;
-      padding-bottom: 20px;
+      padding-bottom: 40px;
       justify-content: flex-start;
     }
 
     .product-item {
       position: relative;
-      width: 250px;
-      height: 300px;
+      width: 350px;
+      height: 550px;
       border-radius: 10px;
       overflow: hidden;
       transition: transform 0.3s ease;
+      background-color: #111;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
     }
 
     .product-item img {
       width: 100%;
       height: auto;
-      filter: grayscale(100%);
-      transition: filter 0.3s ease, transform 0.3s ease;
+      object-fit: cover;
+      transition: transform 0.3s ease;
+      filter: none;
     }
 
     .product-item:hover img {
-      filter: grayscale(0);
       transform: scale(1.05);
+    }
+
+    .product-details {
+      padding: 20px;
+      text-align: left;
+      font-size: 1.3rem;
+      font-weight: bold;
     }
 
     .buy-button {
       position: absolute;
-      bottom: 10px;
+      bottom: 20px;
       left: 50%;
       transform: translateX(-50%);
-      background: rgba(0, 0, 0, 0.7);
+      background: rgba(0, 0, 0, 0.8);
       color: white;
-      padding: 10px 20px;
+      font-size: 1.3rem;
+      font-weight: bold;
+      padding: 14px 28px;
       border: none;
       cursor: pointer;
-      border-radius: 5px;
-      transition: background-color 0.3s ease;
+      border-radius: 8px;
+      transition: background-color 0.3s ease, transform 0.3s ease;
     }
 
     .buy-button:hover {
-      background-color: rgba(0, 0, 0, 0.9);
+      background-color: rgba(255, 255, 255, 0.1);
+      transform: scale(1.05);
     }
 
     .cart-icon {
@@ -131,9 +145,9 @@
       background-color: #000;
       color: white;
       border-radius: 50%;
-      padding: 10px;
+      padding: 12px;
       cursor: pointer;
-      font-size: 1.5rem;
+      font-size: 1.7rem;
       transition: transform 0.3s ease;
     }
 
@@ -148,8 +162,9 @@
       background: red;
       color: white;
       border-radius: 50%;
-      padding: 5px 10px;
+      padding: 6px 10px;
       font-size: 1rem;
+      font-weight: bold;
     }
   </style>
 </head>
@@ -170,22 +185,53 @@
     <h2>Our Latest Collection</h2>
     <div class="product-container">
       <div class="product-item" data-product-id="1" data-product-name="Product 1" data-product-price="29.99">
-        <img src="product1.jpg" alt="Product 1">
+        <img src="_ For more details, visit the website through the….jfif" alt="Product 1">
+        <div class="product-details">
+          <p>Price: $29.99</p>
+ <label for="size1">Size:</label>
+          <select id="size1">
+            <option value="M">M</option>
+            <option value="L">L</option>
+            <option value="XL">XL</option>
+            <option value="XXL">XXL</option></select>
+        </div>
         <button class="buy-button" onclick="addToCart(1, 'Product 1', 29.99)">Buy</button>
       </div>
 
       <div class="product-item" data-product-id="2" data-product-name="Product 2" data-product-price="49.99">
-        <img src="product2.jpg" alt="Product 2">
+        <img src="CTZ x VSC Wear - 05_07….jfif" alt="Product 2">
+        <div class="product-details">
+          <p>Price: $49.99</p>
+          <label for="size2">Size:</label>
+          <select id="size2">
+            <option value="M">M</option>
+            <option value="L">L</option>
+            <option value="XL">XL</option>
+            <option value="XXL">XXL</option></select>
+        </div>
         <button class="buy-button" onclick="addToCart(2, 'Product 2', 49.99)">Buy</button>
       </div>
 
       <div class="product-item" data-product-id="3" data-product-name="Product 3" data-product-price="39.99">
-        <img src="product3.jpg" alt="Product 3">
+        <img src="Product Detail Style _ Street, Sporty Occasion….jfif" alt="Product 3">
+        <div class="product-details">
+          <p>Price: $39.99</p>
+          <label for="size3">Size:</label>
+          <select id="size3">
+            <option value="M">M</option>
+            <option value="L">L</option>
+            <option value="XL">XL</option>
+            <option value="XXL">XXL</option></select>
+        </div>
         <button class="buy-button" onclick="addToCart(3, 'Product 3', 39.99)">Buy</button>
       </div>
 
       <div class="product-item" data-product-id="4" data-product-name="Product 4" data-product-price="19.99">
-        <img src="product4.jpg" alt="Product 4">
+        <img src="download (1).jfif" alt="Product 4">
+        <div class="product-details">
+          <p>Price: $19.99</p>
+          <p>Size: M, L, XL, XXL</p>
+        </div>
         <button class="buy-button" onclick="addToCart(4, 'Product 4', 19.99)">Buy</button>
       </div>
     </div>
@@ -197,30 +243,24 @@
   </div>
 
   <script>
-    // Add to Cart Functionality
     function addToCart(id, name, price) {
       let cart = JSON.parse(localStorage.getItem('cart')) || [];
       cart.push({ id, name, price });
       localStorage.setItem('cart', JSON.stringify(cart));
-
-      // Update cart icon count
       updateCartCount();
 
-      // Optional: Animate the add to cart button
       const button = event.target;
       button.classList.add('added');
       setTimeout(() => {
         button.classList.remove('added');
-      }, 1000);  // Remove animation after 1 second
+      }, 1000);
     }
 
-    // Update cart count in the cart icon
     function updateCartCount() {
       let cart = JSON.parse(localStorage.getItem('cart')) || [];
       document.getElementById('cartCount').textContent = cart.length;
     }
 
-    // Call updateCartCount on page load to reflect current cart items
     updateCartCount();
   </script>
 
