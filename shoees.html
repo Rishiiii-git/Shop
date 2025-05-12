@@ -7,8 +7,9 @@
   <script src="https://cdn.tailwindcss.com"></script>
   <!-- Model Showcase Section -->
 
-  <section class="w-full h-[70vh] flex items-center justify-center">
-    <div class="relative w-[65%] h-full overflow-hidden rounded-2xl shadow-2xl">
+  <section class="w-full h-[80vh] flex items-center justify-center">
+    <div class="relative w-[30%] h-full overflow-hidden rounded-2xl shadow-2xl">
+      <!-- Foreground video (video5.mp4) -->
       <video class="w-full h-full object-cover" autoplay muted loop playsinline>
         <source src="video5.mp4" type="video/mp4">
         Your browser does not support the video tag.
@@ -26,16 +27,6 @@
       margin: 0;
       padding: 0;
       overflow-x: hidden;
-    }
-
-    body::before {
-      content: "";
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100vw;
-      height: 100vh;
-      z-index: -1;
     }
 
     /* Background Video */
@@ -141,7 +132,7 @@
   </style>
 </head>
 <body class="bg-gray-100 font-sans">
-  <!-- Background Video -->
+  <!-- Background Video (video6.mp4) -->
   <video autoplay muted loop class="background-video">
     <source src="video6.mp4" type="video/mp4">
     Your browser does not support the video tag.
