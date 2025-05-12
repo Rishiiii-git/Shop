@@ -6,31 +6,48 @@
   <title>Blank & Co Wear$</title>
   <script src="https://cdn.tailwindcss.com"></script>
   <!-- Model Showcase Section -->
-<section class="w-full h-[70vh] flex items-center justify-center">
-  <div class="relative w-[60%] h-full overflow-hidden rounded-2xl shadow-2xl">
-    <video class="w-full h-full object-cover" autoplay muted loop playsinline>
-      <source src="video3.mp4" type="video/mp4">
-      Your browser does not support the video tag.
-    </video>
-    <div class="absolute inset-0 bg-black/40 flex items-center justify-center">
-      <h2 class="text-4xl md:text-6xl font-extrabold text-white text-center px-4">
-        Real Fit. Real Vibe.<br>Watch the Style Come to Life.
-      </h2>
+
+  <section class="w-full h-[80vh] flex items-center justify-center">
+    <div class="relative w-[30%] h-full overflow-hidden rounded-2xl shadow-2xl">
+      <video class="w-full h-full object-cover" autoplay muted loop playsinline>
+        <source src="video5.mp4" type="video/mp4">
+        Your browser does not support the video tag.
+      </video>
+      <div class="absolute inset-0 bg-black/40 flex items-center justify-center">
+        <h2 class="text-4xl md:text-6xl font-extrabold text-white text-center px-4">
+         <br> 
+        </h2>
+      </div>
     </div>
-  </div>
-</section>
+  </section>
 
   <style>
+    body {
+      margin: 0;
+      padding: 0;
+      overflow-x: hidden;
+    }
+
     body::before {
       content: "";
-      background: url('background.jpg') no-repeat center center/cover;
       position: fixed;
       top: 0;
       left: 0;
       width: 100vw;
       height: 100vh;
       z-index: -1;
-      filter: blur(6px) brightness(0.5);
+    }
+
+    /* Background Video */
+    .background-video {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      z-index: -1;
+      filter:  brightness(0.5);
     }
 
     .card {
@@ -124,6 +141,12 @@
   </style>
 </head>
 <body class="bg-gray-100 font-sans">
+  <!-- Background Video -->
+  <video autoplay muted loop class="background-video">
+    <source src="video6.mp4" type="video/mp4">
+    Your browser does not support the video tag.
+  </video>
+
   <h1 class="text-6xl font-extrabold text-center text-white pt-10 drop-shadow-md">Blank & Co Wear$</h1>
 
   <div class="top-cart">

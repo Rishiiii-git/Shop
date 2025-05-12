@@ -53,6 +53,10 @@ body {
   backdrop-filter: blur(20px);
   font-size: 18px;
 }
+.product-card source{
+height: 700px;
+max-height: 500px;
+}
 
 .product-card:hover {
   transform:rotateX(10deg)
@@ -71,17 +75,8 @@ body {
   object-fit: cover;
   border-radius: 10px;
 }
-.product-cardd {
-margin-top: 7px;
-  padding: 5px;
-  font-size: 45px;
-  background: rgb(119, 0, 178);
-  border:none;
-  border-radius: 40px;
-  cursor: pointer;
-    color: rgb(255, 255, 255);
-  width: 100%;
-}
+
+  
 .product-card label {
   font-size: 25px;
 }
@@ -96,7 +91,7 @@ font-size: 20px;
   margin-top: 10px;
   padding: 15px;
   font-size: 30px;
-  background: limegreen;
+  background: rgb(0, 0, 0);
   border: none;
   border-radius: 10px;
   cursor: pointer;
@@ -105,7 +100,7 @@ font-size: 20px;
 }
 
 .buy-btn:hover {
-  background: green;
+  background: rgb(0, 0, 0);
 }
 
 .quantity {
@@ -138,15 +133,15 @@ font-size: 20px;
   font-size: 30px;
  
   padding: 20px 40px;
-  background: rgb(0, 255, 47);
-  color: rgb(0, 0, 0);
+  background: rgb(0, 0, 0);
+  color: rgb(255, 252, 252);
   border: none;
   border-radius: 16px;
   cursor: pointer;
 }
 
 .checkout-section button:hover {
-  background: darkred;
+  background: rgb(0, 0, 0);
 }
 
 .model-showcase {
@@ -183,7 +178,7 @@ font-size: 20px;
   margin-top: 20px;
   padding: 15px 30px;
   font-size: 20px;
-  background: green;
+  background: rgb(0, 0, 0);
   color: white;
   border: none;
   border-radius: 10px;
